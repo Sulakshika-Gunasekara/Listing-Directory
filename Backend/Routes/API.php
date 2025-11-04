@@ -9,11 +9,13 @@ require_once __DIR__ . '/../app/Router.php';
 require_once __DIR__ . '/../app/Http/Controllers/ListingController.php';
 require_once __DIR__ . '/../app/Http/Controllers/CategoryController.php';
 require_once __DIR__ . '/../App/Controllers/ServiceController.php';
+require_once __DIR__ . '/../App/Controllers/ReviewController.php';
 
 $router = new Router();
 $listingController = new ListingController();
 $categoryController = new CategoryController();
 $serviceController = new ServiceController();
+$reviewController = new ReviewController();
 
 $router->get('/listings', function() use ($listingController) {
     if (isset($_GET['category_id'])) {
@@ -38,6 +40,40 @@ $router->get('/services', function() use ($serviceController) {
         $serviceController->getAll();
     }
 });
+
+// Reviews routes
+$router->get('/reviews', function() use ($reviewController) {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if (isset($_GET['id'])) {
+            $reviewController->show($_GET['id']);
+        } else {
+            $reviewController->index();
+        }
+    }
+});
+
+$router->post('/reviews', function() use ($reviewController) {
+    $reviewController->store();
+});
+
+$router->put('/reviews', function() use ($reviewController) {
+    if (isset($_GET['id'])) {
+        $reviewController->update($_GET['id']);
+    } else {
+        http_response_code(400);
+        echo json_encode(['message' => 'Missing review ID.']);
+    }
+});
+
+$router->delete('/reviews', function() use ($reviewController) {
+    if (isset($_GET['id'])) {
+        $reviewController->destroy($_GET['id']);
+    } else {
+        http_response_code(400);
+        echo json_encode(['message' => 'Missing review ID.']);
+    }
+});
+
 
 $router->resolve();
 ?>
