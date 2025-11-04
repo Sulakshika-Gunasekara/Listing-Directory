@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiptra Sri Lanka</title>
+    <link rel="manifest" href="manifest.json" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.5/dist/cdn.min.js"
+      defer></script>
+  </head>
+  <body class="bg-white">
+    <!-- App container -->
+    <div x-data="app()">
+      <!-- Header -->
+      <header class="sticky top-0 bg-white shadow-md z-10">
+        <div class="container mx-auto p-4">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full p-2 border border-gray-300 rounded-md" />
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="container mx-auto p-4">
+        <!-- Listings -->
+        <div
+          id="listings"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <!-- Listing cards will be injected here -->
+        </div>
+      </main>
+
+      <!-- Bottom navigation -->
+      <nav class="fixed bottom-0 w-full bg-white shadow-lg">
+        <div class="container mx-auto flex justify-around p-4">
+          <a href="#" class="text-gray-600">Home</a>
+          <a href="#" class="text-gray-600">Categories</a>
+          <a href="#" class="text-gray-600">Map</a>
+          <a href="#" class="text-gray-600">Search</a>
+          <a href="#" class="text-gray-600">Profile</a>
+        </div>
+      </nav>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
