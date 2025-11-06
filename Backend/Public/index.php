@@ -9,5 +9,5 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Include your main API route definitions
-require_once ROOT_PATH . 'routes/api.php';
+require_once ROOT_PATH . 'Routes/API.php';
 ?>
